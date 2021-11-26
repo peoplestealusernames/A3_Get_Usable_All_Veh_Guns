@@ -1,16 +1,33 @@
-Arma 3 script that all of the vehicle guns "Most" are usable when equiped however some of the cannons seem not to work
+An Arma 3 script that reads through the game config to get guns that can be fired but are not avaliable in the arsenal.
+This runs off an exploit and is based off a christmas special from liru about firing hydra pods as a player
 
-if your running this on a server there is a fuctions file and a run file if you want just one client to run it then add {publicVariable "RECREATEVAR"} and do {call recreate} on each client
+## How it works
+I ran a config custom config compairer to find what configs are the same in the glich weapons to find other that could also work.
+This goes through all of CfgWeapons to find anything with the same values and shows a menu with them in it.
 
-if your running it single player or just for yourself you can copy and paste the pasteable file straight into debug and it will work
+## How to use
+### With debug console
+Copy and paste the Pasteable.txt into your console
 
-the way you equip the guns is dropping them on the floor from your inventory and pick them up as if they were a gun on the ground this 
-a clip from liru about how to pick it up https://youtu.be/y0DSPSOz9w4?t=735
+### With sqfs
+Copy FNCS.sqf and Run.sqf exec Run.sqf
 
-should make you hold it in your hand and give you the option to fire it
+### Reopening
+With either method you can run {call recreate} to reopen the menu without prasing all of CfgWeapons again
 
-warning #1 this will cause alot of lag and even more lag with addition mods as it runs through all of cfgweapons
+### Equiping the guns
+#1 From the menu it puts them in your inventory
+#2 Drop the weapon on the ground
+#3 Use the action menu to pick it up (It should act like you picked up a weapon)
+#4 Enjoy
 
-warning #2 some of these dont work dagr for sure so use them for testing to make sure your doing it right
+[A clip from liru showing this](https://youtu.be/y0DSPSOz9w4?t=735)
 
-if you want to repoen it run {call recreate} and it will reopen the menu with all the previous weapons
+# WARNING!
+#1 this will cause alot of lag and even more lag with addition mods as it runs through all of cfgweapons
+#2 some of these dont work dagr for sure so use them for testing to make sure your doing it right
+
+## Server side
+If your doing this on a server dont put it on init or join, as it may crash games or cause player drop on joining
+Instead run it on one client or server side then use {publicVariable "RECREATEVAR"} it will pass the end result to all clients
+Using {call recreate} will open the menu if you already ran FNCS.sqf
